@@ -5,7 +5,7 @@
 #include <unistd.h>
 /**
  */
-args *argument = NULL;
+args *arguments = NULL;
 
 int main(int argc, char **av)
 {
