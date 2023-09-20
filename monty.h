@@ -1,5 +1,20 @@
 #ifndef MONTY_H
 #define MONTY_H
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <string.h>
+
+/**
+ */
+typedef struct arguments
+{
+	FILE *file;
+	char *line_buffer;
+}args;
+
+extern args *arguments;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
