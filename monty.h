@@ -1,10 +1,14 @@
 #ifndef MONTY_H
 #define MONTY_H
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <string.h>
+#include <fcntl.h>
+#include <stddef.h>
 
 /**
  */
@@ -15,6 +19,13 @@ typedef struct arguments
 }args;
 
 extern args *arguments;
+
+void check_num_of_argument(int argc);
+void initialize_arguments_node(void);
+void fetch_file_content(char *user_file);
+void memory_allocation_failed(void);
+void fetch_failed(char *user_file);
+void free_arguments_node(void);
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
