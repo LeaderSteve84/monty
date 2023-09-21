@@ -1,5 +1,4 @@
 #include "monty.h"
-#include <stdio.h>
 /**
  * initialize_arguments_node - function that initialize
  * the arguments node members to NULL

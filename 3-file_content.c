@@ -1,5 +1,4 @@
 #include "monty.h"
-#include <stdio.h>
 /**
  * fetch_file_content - function that fetch the content of
  * the user inputted file,

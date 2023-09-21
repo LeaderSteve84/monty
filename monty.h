@@ -1,3 +1,6 @@
+#ifndef MONTY_H
+#define MONTY_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -6,8 +9,6 @@
 #include <fcntl.h>
 #include <stddef.h>
 #include <ctype.h>
-#ifndef MONTY_H
-#define MONTY_H
 /**
  */
 typedef struct arguments

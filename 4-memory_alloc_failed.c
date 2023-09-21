@@ -1,5 +1,4 @@
 #include "monty.h"
-#include <stdio.h>
 /**
  */
 void memory_allocation_failed(void)

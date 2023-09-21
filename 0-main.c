@@ -1,5 +1,4 @@
 #include "monty.h"
-#include <stdio.h>
 /**
  * main - Entry point
  * @av: argument vector

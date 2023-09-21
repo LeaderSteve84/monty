@@ -1,5 +1,4 @@
 #include "monty.h"
-#include <stdio.h>
 /**
  */
 void fetch_failed(char *user_file)
