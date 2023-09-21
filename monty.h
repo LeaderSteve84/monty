@@ -20,7 +20,10 @@ void fetch_failed(char *user_file);
 void free_arguments_node(void);
 void tokenize_read_line(void);
 void free_toks_arr(void);
-
+void fetch_instruction(void);
+void close_file(void);
+void execute_instruction(void);
+void instruction_not_valid(void);
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
