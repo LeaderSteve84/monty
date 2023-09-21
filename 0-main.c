@@ -24,5 +24,6 @@ int main(int argc, char **av)
 		printf("%s", arguments->read);
 	}
 	fclose(arguments->file);
+	free_arguments_node();
 	return (0);
 }
