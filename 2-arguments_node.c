@@ -12,5 +12,6 @@ void initialize_arguments_node(void)
 		memory_allocation_failed();
 	}
 	arguments->file = NULL;
-	arguments->line_buffer = NULL;
+	arguments->toks_num = 0;
+	arguments->file_line_num = 0;
 }

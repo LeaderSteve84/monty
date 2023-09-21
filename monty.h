@@ -11,14 +11,6 @@
 #include <ctype.h>
 /**
  */
-typedef struct arguments
-{
-	FILE *file;
-	char *line_buffer;
-	char read[100];
-}args;
-
-extern args *arguments;
 
 void check_num_of_argument(int argc);
 void initialize_arguments_node(void);
@@ -26,6 +18,8 @@ void fetch_file_content(char *user_file);
 void memory_allocation_failed(void);
 void fetch_failed(char *user_file);
 void free_arguments_node(void);
+void tokenize_read_line(void);
+void free_toks_arr(void);
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -56,5 +50,17 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+typedef struct arguments
+{
+        FILE *file;
+        char **toks_arr;
+        char read[100];
+        unsigned int file_line_num;
+        int toks_num;
+        instruction_t *instruct;
+}args;
+
+extern args *arguments;
 
 #endif /* MONTY_H */
