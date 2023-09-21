@@ -10,7 +10,7 @@ void check_num_of_argument(int argc)
 {
 	if (argc == 1 || argc > 2)
 	{
-		dprintf(2, "USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 }

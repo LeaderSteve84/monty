@@ -8,19 +8,9 @@
  */
 void fetch_file_content(char *user_file)
 {
-	int fd;
-
-	fd = open(user_file, O_RDONLY);
-	if (fd == -1)
-	{
-		fetch_failed(user_file);
-	}
-
-	arguments->file = fdopen(fd, "r");
-
+	arguments->file = fopen(user_file, "r");
 	if (arguments->file == NULL)
 	{
-		close(fd);
 		fetch_failed(user_file);
 	}
 }
