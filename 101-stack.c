@@ -1,37 +1,49 @@
 #include "monty.h"
 
-int data;
 /**
+ *
  */
 void push(stack_t **my_stack, unsigned int line_number)
 {
-	stack_t *new;
-	(void)line_number;
+	char *endptr;
 
-	new = malloc(sizeof(stack_t));
-	if (new == NULL)
+	if (arguments->toks_num <= 1 || !(strtol(arguments->toks_arr[1], &endptr, 10)))
+	{
+		free_arguments_node();
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	*my_stack = malloc(sizeof(stack_t));
+	if (*my_stack == NULL)
 	{
 		memory_allocation_failed();
 	}
-	new->n = data;
-	new->prev = NULL;
+	(*my_stack)->n = (int)atoi(arguments->toks_arr[1]);
+	(*my_stack)->prev = NULL;
+	(*my_stack)->next = NULL;
+
 	if (*my_stack != NULL)
 	{
-		(*my_stack)->prev = new;
+		(*my_stack)->next = arguments->head;
+		arguments->head->prev = *my_stack;
 	}
-	new->next = *my_stack;
-	*my_stack = new;
+	arguments->head = *my_stack;
+	arguments->top += 1;
 }
 
 /**
  */
 void pall(stack_t **my_stack, unsigned int line_number)
 {
-	stack_t *current = *my_stack;
-	(void)line_number;
+	stack_t *current;
 
-	if (*my_stack == NULL || my_stack == NULL)
+	(void)line_number;
+	(void)my_stack;
+
+	if (arguments->head == NULL)
 		return;
+	current = arguments->head;
 	while (current != NULL)
 	{
 		printf("%d\n", current->n);
@@ -48,15 +60,14 @@ void pall(stack_t **my_stack, unsigned int line_number)
  */
 void pint(stack_t **my_stack, unsigned int line_number)
 {
-	stack_t *current = *my_stack;
-
-	if (*my_stack == NULL)
+	(void)my_stack;
+	if (arguments->head == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		free_arguments_node();
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", current->n);
+	printf("%d\n", arguments->head->n);
 }
 
 /**
@@ -65,6 +76,4 @@ void nop(stack_t **my_stack, unsigned int line_number)
 {
 	(void)my_stack;
 	(void)line_number;
-
-	free_arguments_node();
 }

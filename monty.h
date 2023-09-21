@@ -62,8 +62,15 @@ typedef struct arguments
         unsigned int file_line_num;
         int toks_num;
         instruction_t *instruct;
+	stack_t *head;
+	int top;
 }args;
 
 extern args *arguments;
+
+void push(stack_t **my_stack, unsigned int line_number);
+void pall(stack_t **my_stack, unsigned int line_number);
+void pint(stack_t **my_stack, unsigned int line_number);
+void nop(stack_t **my_stack, unsigned int line_number);
 
 #endif /* MONTY_H */

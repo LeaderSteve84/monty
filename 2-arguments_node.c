@@ -14,4 +14,6 @@ void initialize_arguments_node(void)
 	arguments->file = NULL;
 	arguments->toks_num = 0;
 	arguments->file_line_num = 0;
+	arguments->head = NULL;
+	arguments->top = -1;
 }
