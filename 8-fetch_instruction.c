@@ -9,7 +9,8 @@ void fetch_instruction(void)
 	instruction_t instructions[] = {
 		{"push", &push}, {"pall", &pall}, {"pint", &pint},
 		{"pop", &pop}, {"swap", &swap}, {"add", &add},
-		{"nop", &nop}, {NULL, NULL}
+		{"nop", &nop}, {"sub", &sub}, {"div", &div},
+		{"mul", &mul}, {"mod", &mod}, {NULL, NULL}
 	};
 
 	if (arguments->toks_num == 0)
