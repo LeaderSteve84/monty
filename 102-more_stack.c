@@ -27,49 +27,37 @@ void pop(stack_t **head, unsigned int line_number)
 		free(current);
 	}
 	if (current->next == NULL)
-        {
-                *head = NULL;
-                free(current);
-        }
+	{
+		*head = NULL;
+	free(current);
+	}
 }
 
 /**
  * swap - Swaps the first two data on the stack
- * @my_stack: The whole stack
+ * @head: The whole stack
  * @line_number: The current line
  * Return: Nothing
  */
 
-void swap(stack_t **my_stack, unsigned int line_number)
+void swap(stack_t **head, unsigned int line_number)
 {
-	int node_count = 0, a;
-	stack_t *temp = *my_stack, *current = *my_stack;
+	int a;
+	stack_t *current;
 
-	if (*my_stack == NULL || my_stack == NULL)
+	current = *head;
+
+	if (current == NULL || current->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
-		free_arguments_node();
-		exit(EXIT_FAILURE);
-	}
-	while (temp != NULL)
-	{
-		node_count++;
-		temp = temp->next;
-	}
-	if (node_count < 2)
-	{
-		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
-		free_arguments_node();
+		freeMemory_closeFile();
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		if (current != NULL && current->next != NULL)
-		{
-			a = current->n;
-			current->n = current->next->n;
-			current->next->n = a;
-		}
+		a = current->n;
+		current->n = current->next->n;
+		current->next->n = a;
 	}
 }
 
