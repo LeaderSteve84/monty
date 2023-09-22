@@ -87,8 +87,12 @@ void add(stack_t **head, unsigned int line_number);
 void sub(stack_t **head, unsigned int line_number);
 void divide(stack_t **head, unsigned int line_number);
 void mod(stack_t **head, unsigned int line_number);
+<<<<<<< HEAD
 void pchar(stack_t **head, unsigned int line_number);
 int _putchar(char c);
+=======
+void mul(stack_t **head, unsigned int line_number);
+>>>>>>> f85469a2bcbe4226098f301e0ddf0727a103ad39
 int check_string(char *string);
 void free_lists(void);
 void freeMemory_closeFile(void);
