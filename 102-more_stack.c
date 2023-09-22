@@ -29,7 +29,7 @@ void pop(stack_t **head, unsigned int line_number)
 	if (current->next == NULL)
 	{
 		*head = NULL;
-	free(current);
+		free(current);
 	}
 }
 
@@ -63,15 +63,15 @@ void swap(stack_t **head, unsigned int line_number)
 
 /**
  * add - adds the first two data on the stack and pops
- * @my_stack: The whole stack
+ * @head: The whole stack
  * @line_number: The current line
  * Return: Nothing
  */
 
-void add(stack_t **my_stack, unsigned int line_number)
+void add(stack_t **head, unsigned int line_number)
 {
 	int node_count = 0, sum;
-	stack_t *temp = *my_stack, *current = *my_stack;
+	stack_t *temp = *head, *current = *head;
 
 	if (*my_stack == NULL || my_stack == NULL)
 	{
@@ -96,7 +96,49 @@ void add(stack_t **my_stack, unsigned int line_number)
 		{
 			sum = current->n + current->next->n;
 			current->next->n = sum;
-			*my_stack = current->next;
+			*head = current->next;
+			current->next->prev = NULL;
+			free(current);
+		}
+	}
+}
+
+/**
+ * sub - Subtracts the first two data on the stack and pops
+ * @head: The whole stack
+ * @line_number: The current line
+ * Return: Nothing
+ */
+
+void sub(stack_t **head, unsigned int line_number)
+{
+	int node_count = 0, diff;
+	stack_t *temp = *head, *current = *head;
+
+	if (*my_stack == NULL || my_stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		free_arguments_node();
+		exit(EXIT_FAILURE);
+	}
+	while (temp != NULL)
+	{
+		node_count++;
+		temp = temp->next;
+	}
+	if (node_count < 2)
+	{
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		free_arguments_node();
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		if (current != NULL && current->next != NULL)
+		{
+			diff = current->next->n - current->n;
+			current->next->n = diff;
+			*head = current->next;
 			current->next->prev = NULL;
 			free(current);
 		}
