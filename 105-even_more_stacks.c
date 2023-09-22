@@ -69,6 +69,7 @@ void pchar(stack_t **head, unsigned int line_number)
 		(current->n >= 97 && current->n <= 122))
 	{
 		_putchar(current->n);
+		_putchar('\n');
 	}
 	else
 	{
