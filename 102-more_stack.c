@@ -2,25 +2,35 @@
 
 /**
  * pop - Deletes the node at the top of the stack
- * @my_stack: The whole stack
+ * @head: The whole stack
  * @line_number: Current line number
  * Return: Nothing
  */
 
-void pop(stack_t **my_stack, unsigned int line_number)
+void pop(stack_t **head, unsigned int line_number)
 {
-	stack_t *current = *my_stack;
+	stack_t *current;
 
-	if (*my_stack == NULL)
+	if (arguments->top == -1)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
-		free_arguments_node();
+		freeMemory_closeFile();
 		exit(EXIT_FAILURE);
 	}
-	*my_stack = current->next;
+
+	current = *head;
+
 	if (current->next != NULL)
+	{
+		*head = current->next;
 		current->next->prev = NULL;
-	free(current);
+		free(current);
+	}
+	if (current->next == NULL)
+        {
+                *head = NULL;
+                free(current);
+        }
 }
 
 /**

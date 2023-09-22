@@ -96,30 +96,32 @@ void pall(stack_t **head, unsigned int line_number)
 
 /**
  * pint - Prints the value at the top of the stack
- * @my_stack: The stack
+ * @head: pointer to the first node in stack
  * @line_number: The current line number
  * Return: Nothing
  */
-void pint(stack_t **my_stack, unsigned int line_number)
+void pint(stack_t **head, unsigned int line_number)
 {
-	(void)my_stack;
-	if (arguments->head == NULL)
+	stack_t *current;
+
+	if (arguments->top == -1)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-		free_arguments_node();
+		freeMemory_closeFile();
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", arguments->head->n);
+	current = *head;
+	printf("%d\n", current->n);
 }
 
 /**
  * nop - do nothing
- * @my_stack: new created stack
+ * @head: pointer to the first node of the stack
  * @line_number: current line number in file
  * Return: Nothing
  */
-void nop(stack_t **my_stack, unsigned int line_number)
+void nop(stack_t **head, unsigned int line_number)
 {
-	(void)my_stack;
+	(void)head;
 	(void)line_number;
 }
