@@ -47,3 +47,44 @@ void mod(stack_t **head, unsigned int line_number)
 		}
 	}
 }
+
+/**
+ * pchar - Finds the remainder of first two data on the stack and pops
+ * @head: The whole stack
+ * @line_number: The current line
+ * Return: Nothing
+ */
+
+void pchar(stack_t **head, unsigned int line_number)
+{
+	stack_t *current = *head;
+
+	if (*head == NULL || head == NULL)
+	{
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
+		free_arguments_node();
+		exit(EXIT_FAILURE);
+	}
+	if (current->n >= 32 && current->n <= 127)
+	{
+		_putchar(current->n);
+	}
+	else
+	{
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
+		free_arguments_node();
+		exit(EXIT_FAILURE);
+	}
+}
+
+/**
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
