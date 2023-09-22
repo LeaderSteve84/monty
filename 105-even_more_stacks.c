@@ -66,7 +66,7 @@ void pchar(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	if ((current->n >= 65 && current->n <= 90) ||
-		(current->n >= 97 && current->n <= 122))
+			(current->n >= 97 && current->n <= 122))
 	{
 		_putchar(current->n);
 		_putchar('\n');
@@ -77,6 +77,39 @@ void pchar(stack_t **head, unsigned int line_number)
 		free_arguments_node();
 		exit(EXIT_FAILURE);
 	}
+}
+
+/**
+ * pstr - Prints the ASCII value of all data in the stack
+ * @head: The whole stack
+ * @line_number: The current line
+ * Return: Nothing
+ */
+
+void pstr(stack_t **head, unsigned int line_number)
+{
+	stack_t *current = *head;
+	(void)line_number;
+
+	if (*head == NULL || head == NULL)
+	{
+		_putchar('\n');
+		return;
+	}
+	while (current != NULL)
+	{
+		if (current->n == 0)
+			break;
+		if ((current->n >= 65 && current->n <= 90) ||
+				(current->n >= 97 && current->n <= 122))
+		{
+			_putchar(current->n);
+		}
+		else
+			break;
+		current = current->next;
+	}
+	_putchar('\n');
 }
 
 /**
