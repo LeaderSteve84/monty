@@ -49,7 +49,7 @@ void mod(stack_t **head, unsigned int line_number)
 }
 
 /**
- * pchar - Finds the remainder of first two data on the stack and pops
+ * pchar - Prints the ASCII value of the data on top of the stack
  * @head: The whole stack
  * @line_number: The current line
  * Return: Nothing
@@ -65,7 +65,8 @@ void pchar(stack_t **head, unsigned int line_number)
 		free_arguments_node();
 		exit(EXIT_FAILURE);
 	}
-	if (current->n >= 0 && current->n <= 127)
+	if ((current->n >= 65 && current->n <= 90) ||
+		(current->n >= 97 && current->n <= 122))
 	{
 		_putchar(current->n);
 	}
