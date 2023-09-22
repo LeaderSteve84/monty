@@ -2,7 +2,7 @@
 /**
  * initialize_arguments_node - function that initialize
  * the arguments node members to NULL
- * Return:
+ * Return: Nothing
  */
 void initialize_arguments_node(void)
 {

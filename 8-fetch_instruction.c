@@ -1,5 +1,7 @@
 #include "monty.h"
 /**
+ * fetch_instruction - get instruction
+ * Return: Nothing
  */
 void fetch_instruction(void)
 {
@@ -23,14 +25,17 @@ void fetch_instruction(void)
 			return;
 		}
 	}
-	instruction_not_valid();	
+	instruction_not_valid();
 }
 
 /**
+ * instruction_not_valid - print invalid instruction
+ * Return: Nothing
  */
 void instruction_not_valid(void)
 {
-	fprintf(stderr, "L%d: unknown instruction %s\n", arguments->file_line_num, arguments->toks_arr[0]);
+	fprintf(stderr, "L%d: unknown instruction %s\n",
+			arguments->file_line_num, arguments->toks_arr[0]);
 	close_file();
 	free_toks_arr();
 	free_arguments_node();

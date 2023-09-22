@@ -1,13 +1,14 @@
 #include "monty.h"
 
 /**
- *
+ * push - insert integr valu at the begining of a stack
+ * @my_stack: newly created stack
+ * @line_number: line number in the file
+ * Return: Nothing
  */
 void push(stack_t **my_stack, unsigned int line_number)
 {
-	char *endptr;
-
-	if (arguments->toks_num <= 1 || !(strtol(arguments->toks_arr[1], &endptr, 10)))
+	if (arguments->toks_num < 1 || !(check_string(arguments->toks_arr[1])))
 	{
 		free_arguments_node();
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
@@ -23,7 +24,7 @@ void push(stack_t **my_stack, unsigned int line_number)
 	(*my_stack)->prev = NULL;
 	(*my_stack)->next = NULL;
 
-	if (*my_stack != NULL)
+	if (arguments->head != NULL)
 	{
 		(*my_stack)->next = arguments->head;
 		arguments->head->prev = *my_stack;
@@ -31,8 +32,34 @@ void push(stack_t **my_stack, unsigned int line_number)
 	arguments->head = *my_stack;
 	arguments->top += 1;
 }
+/**
+ * check_string - check if string is a valid integer
+ * @string: string to check
+ * Return: an integer value
+ */
+int check_string(char *string)
+{
+	int i = 0;
+
+	while (string[i])
+	{
+		if (i == 0 && string[i] == '-' && string[i + 1])
+		{
+			i++;
+			continue;
+		}
+		if (string[i] < '0' || string[i] > '9')
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 /**
+ * pall - function to print the data in stack
+ * @my_stack: new created stack
+ * @line_number: line number in file
+ * Return: Nothing
  */
 void pall(stack_t **my_stack, unsigned int line_number)
 {
@@ -55,7 +82,6 @@ void pall(stack_t **my_stack, unsigned int line_number)
  * pint - Prints the value at the top of the stack
  * @my_stack: The stack
  * @line_number: The current line number
- * 
  * Return: Nothing
  */
 void pint(stack_t **my_stack, unsigned int line_number)
@@ -71,6 +97,10 @@ void pint(stack_t **my_stack, unsigned int line_number)
 }
 
 /**
+ * nop - do nothing
+ * @my_stack: new created stack
+ * @line_number: current line number in file
+ * Return: Nothing
  */
 void nop(stack_t **my_stack, unsigned int line_number)
 {

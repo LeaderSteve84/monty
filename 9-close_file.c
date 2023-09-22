@@ -1,5 +1,7 @@
 #include "monty.h"
 /**
+ * close_file - closes an open file
+ * Return: Nothing
  */
 void close_file(void)
 {

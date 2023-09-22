@@ -1,5 +1,7 @@
 #include "monty.h"
 /**
+ * free_arguments_node - free memory
+ * Return: Nothing
  */
 void free_arguments_node(void)
 {
@@ -7,6 +9,8 @@ void free_arguments_node(void)
 }
 
 /**
+ * free_toks_arr - free memory
+ * Return: Nothing
  */
 void free_toks_arr(void)
 {

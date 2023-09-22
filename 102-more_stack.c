@@ -4,7 +4,6 @@
  * pop - Deletes the node at the top of the stack
  * @my_stack: The whole stack
  * @line_number: Current line number
- * 
  * Return: Nothing
  */
 
@@ -28,7 +27,6 @@ void pop(stack_t **my_stack, unsigned int line_number)
  * swap - Swaps the first two data on the stack
  * @my_stack: The whole stack
  * @line_number: The current line
- * 
  * Return: Nothing
  */
 
@@ -56,9 +54,12 @@ void swap(stack_t **my_stack, unsigned int line_number)
 	}
 	else
 	{
-		a = current->n;
-		current->n = current->next->n;
-		current->next->n = a;
+		if (current != NULL && current->next != NULL)
+		{
+			a = current->n;
+			current->n = current->next->n;
+			current->next->n = a;
+		}
 	}
 }
 
@@ -66,7 +67,6 @@ void swap(stack_t **my_stack, unsigned int line_number)
  * add - adds the first two data on the stack and pops
  * @my_stack: The whole stack
  * @line_number: The current line
- * 
  * Return: Nothing
  */
 
@@ -94,10 +94,13 @@ void add(stack_t **my_stack, unsigned int line_number)
 	}
 	else
 	{
-		sum = current->n + current->next->n;
-		current->next->n = sum;
-		*my_stack = current->next;
-		current->next->prev = NULL;
-		free(current);
+		if (current != NULL && current->next != NULL)
+		{
+			sum = current->n + current->next->n;
+			current->next->n = sum;
+			*my_stack = current->next;
+			current->next->prev = NULL;
+			free(current);
+		}
 	}
 }

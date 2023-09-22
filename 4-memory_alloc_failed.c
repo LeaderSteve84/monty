@@ -1,5 +1,7 @@
 #include "monty.h"
 /**
+ * memory_allocation_failed - malloc failed
+ * Return: Nothing
  */
 void memory_allocation_failed(void)
 {

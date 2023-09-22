@@ -1,5 +1,9 @@
 #include "monty.h"
 /**
+ * fetch_failed - function that print error message
+ * when file cannot be open
+ * @user_file: file input at run of program
+ * Return: Nothing
  */
 void fetch_failed(char *user_file)
 {

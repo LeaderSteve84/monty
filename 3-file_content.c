@@ -2,8 +2,8 @@
 /**
  * fetch_file_content - function that fetch the content of
  * the user inputted file,
- * @user_file:
- * Return:
+ * @user_file: file the user run the program with
+ * Return: Nothing
  */
 void fetch_file_content(char *user_file)
 {

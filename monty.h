@@ -9,8 +9,6 @@
 #include <fcntl.h>
 #include <stddef.h>
 #include <ctype.h>
-/**
- */
 
 void check_num_of_argument(int argc);
 void initialize_arguments_node(void);
@@ -53,18 +51,29 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-
+/**
+ * struct arguments - argument node
+ * @file: file stream
+ * @toks_arr: tokens array
+ * @read: buffer for fgets
+ * @file_line_num: current file line number
+ * @toks_num: num of tokend per line
+ * @instruct: instructions
+ * @head: pointer to top node of stack
+ * @top: ponter to top node
+ *
+ */
 typedef struct arguments
 {
-        FILE *file;
-        char **toks_arr;
-        char read[100];
-        unsigned int file_line_num;
-        int toks_num;
-        instruction_t *instruct;
+	FILE *file;
+	char **toks_arr;
+	char read[100];
+	unsigned int file_line_num;
+	int toks_num;
+	instruction_t *instruct;
 	stack_t *head;
 	int top;
-}args;
+} args;
 
 extern args *arguments;
 
@@ -72,5 +81,9 @@ void push(stack_t **my_stack, unsigned int line_number);
 void pall(stack_t **my_stack, unsigned int line_number);
 void pint(stack_t **my_stack, unsigned int line_number);
 void nop(stack_t **my_stack, unsigned int line_number);
+void pop(stack_t **my_stack, unsigned int line_number);
+void swap(stack_t **my_stack, unsigned int line_number);
+void add(stack_t **my_stack, unsigned int line_number);
+int check_string(char *string);
 
 #endif /* MONTY_H */

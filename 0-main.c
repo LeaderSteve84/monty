@@ -5,8 +5,7 @@
  * @argc: argument count
  * Return: 0 successful
  */
-args *arguments;
-
+args *arguments = NULL;
 
 int main(int argc, char **av)
 {
@@ -14,13 +13,23 @@ int main(int argc, char **av)
 	initialize_arguments_node();
 	fetch_file_content(av[1]);
 
-	while ((fgets(arguments->read, sizeof(arguments->read), arguments->file)) != NULL)
+	while ((fgets(arguments->read, sizeof(arguments->read),
+					arguments->file)) != NULL)
 	{
 		arguments->file_line_num += 1;
 		tokenize_read_line();
+		arguments->instruct = malloc(sizeof(instruction_t));
+		if (arguments->instruct == NULL)
+		{
+			memory_allocation_failed();
+		}
+		arguments->instruct->opcode = NULL;
+		arguments->instruct->f = NULL;
+
 		fetch_instruction();
 		execute_instruction();
 		free_toks_arr();
+		free(arguments->instruct);
 	}
 	close_file();
 	free_arguments_node();
