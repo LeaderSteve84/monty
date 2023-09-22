@@ -11,7 +11,7 @@ void pop(stack_t **head, unsigned int line_number)
 {
 	stack_t *current;
 
-	if (arguments->top == -1)
+	if (*head == NULL || arguments->top == -1)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		freeMemory_closeFile();

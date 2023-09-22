@@ -8,7 +8,10 @@
 void freeMemory_closeFile(void)
 {
 	close_file();
-	free_arguments_node();
+	if (arguments->head != NULL)
+	{
+		free_arguments_node();
+	}
 	free(arguments->instruct);
 	free_toks_arr();
 }
