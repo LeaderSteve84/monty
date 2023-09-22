@@ -65,7 +65,7 @@ void pchar(stack_t **head, unsigned int line_number)
 		free_arguments_node();
 		exit(EXIT_FAILURE);
 	}
-	if (current->n >= 0 && current->n <= 255)
+	if (current->n >= 33 && current->n <= 126)
 	{
 		_putchar(current->n);
 		_putchar('\n');
