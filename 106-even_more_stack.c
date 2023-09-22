@@ -19,9 +19,8 @@ void mul(stack_t **head, unsigned int line_number)
 
 	if (current == NULL || current->next == NULL)
 	{
-		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
-		free(arguments->instruct);
-		free_toks_arr();
+		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
+		free_arguments_node();
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -31,19 +30,8 @@ void mul(stack_t **head, unsigned int line_number)
 		mult = a * b;
 		current->next->n = mult;
 
-		if (current->next->next == NULL)
-		{
-			*head = current->next;
-			current->next->prev = NULL;
-			current->next->next = NULL;
-			free(current);
-		}
-		if (current->next->next != NULL)
-		{
-			*head = current->next;
-			current->next->prev = NULL;
-			free(current);
-		}
-
+		*head = current->next;
+		current->next->prev = NULL;
+		free(current);
 	}
 }
