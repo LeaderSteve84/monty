@@ -31,6 +31,7 @@ int main(int argc, char **av)
 		free_toks_arr();
 		free(arguments->instruct);
 	}
+	free_lists();
 	close_file();
 	free_arguments_node();
 	return (0);

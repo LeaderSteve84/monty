@@ -7,9 +7,9 @@ void fetch_instruction(void)
 {
 	int i;
 	instruction_t instructions[] = {
-		{"push", &push}, {"pint", &pint}, {"nop", &nop},
-		{"pall", &pall}, {"pop", &pop}, {"swap", &swap},
-		{"add", &add}, {NULL, NULL}
+		{"push", &push}, {"pall", &pall}, {"pint", &pint},
+		{"pop", &pop}, {"swap", &swap}, {"add", &add},
+		{"nop", &nop}, {NULL, NULL}
 	};
 
 	if (arguments->toks_num == 0)
@@ -39,5 +39,6 @@ void instruction_not_valid(void)
 	close_file();
 	free_toks_arr();
 	free_arguments_node();
+	free(arguments->instruct);
 	exit(EXIT_FAILURE);
 }

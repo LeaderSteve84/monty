@@ -2,34 +2,49 @@
 
 /**
  * push - insert integr valu at the begining of a stack
- * @my_stack: newly created stack
+ * @head: newly created stack
  * @line_number: line number in the file
  * Return: Nothing
  */
-void push(stack_t **my_stack, unsigned int line_number)
+void push(stack_t **head, unsigned int line_number)
 {
+	stack_t *current, *new_node;
+
 	if (arguments->toks_num < 1 || !(check_string(arguments->toks_arr[1])))
 	{
-		free_arguments_node();
+		freeMemory_closeFile();
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+	if (head == NULL)
+	{
+		return;
+	}
+	new_node = malloc(sizeof(stack_t));
 
-	*my_stack = malloc(sizeof(stack_t));
-	if (*my_stack == NULL)
+	if (new_node == NULL)
 	{
 		memory_allocation_failed();
 	}
-	(*my_stack)->n = (int)atoi(arguments->toks_arr[1]);
-	(*my_stack)->prev = NULL;
-	(*my_stack)->next = NULL;
-
-	if (arguments->head != NULL)
+	else
 	{
-		(*my_stack)->next = arguments->head;
-		arguments->head->prev = *my_stack;
+		if (*head == NULL)
+		{
+			*head = new_node;
+			new_node->prev = NULL;
+			new_node->next = NULL;
+			new_node->n = (int)atoi(arguments->toks_arr[1]);
+		}
+		else
+		{
+			current = *head;
+			*head = new_node;
+			new_node->prev = NULL;
+			new_node->next = current;
+			current->prev = new_node;
+			new_node->n = (int)atoi(arguments->toks_arr[1]);
+		}
 	}
-	arguments->head = *my_stack;
 	arguments->top += 1;
 }
 /**
@@ -57,20 +72,21 @@ int check_string(char *string)
 
 /**
  * pall - function to print the data in stack
- * @my_stack: new created stack
+ * @head: new created stack
  * @line_number: line number in file
  * Return: Nothing
  */
-void pall(stack_t **my_stack, unsigned int line_number)
+void pall(stack_t **head, unsigned int line_number)
 {
 	stack_t *current;
 
 	(void)line_number;
-	(void)my_stack;
 
-	if (arguments->head == NULL)
+	if (arguments->top == -1)
 		return;
-	current = arguments->head;
+
+	current = *head;
+
 	while (current != NULL)
 	{
 		printf("%d\n", current->n);
