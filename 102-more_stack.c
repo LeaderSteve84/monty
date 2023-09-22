@@ -75,7 +75,7 @@ void add(stack_t **head, unsigned int line_number)
 	int node_count = 0, sum;
 	stack_t *temp = *head, *current = *head;
 
-	if (*my_stack == NULL || my_stack == NULL)
+	if (*head == NULL || head == NULL)
 	{
 		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
 		free_arguments_node();
@@ -117,7 +117,7 @@ void sub(stack_t **head, unsigned int line_number)
 	int node_count = 0, diff;
 	stack_t *temp = *head, *current = *head;
 
-	if (*my_stack == NULL || my_stack == NULL)
+	if (*head == NULL || head == NULL)
 	{
 		fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
 		free_arguments_node();
@@ -159,7 +159,7 @@ void div(stack_t **head, unsigned int line_number)
 	int node_count = 0, result;
 	stack_t *temp = *head, *current = *head;
 
-	if (*my_stack == NULL || my_stack == NULL)
+	if (*head == NULL || head == NULL)
 	{
 		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
 		free_arguments_node();
