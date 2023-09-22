@@ -7,11 +7,23 @@
  */
 void freeMemory_closeFile(void)
 {
-	close_file();
+	if (arguments->file != NULL)
+	{
+		if (fclose(arguments->file) == EOF)
+		{
+			fprintf(stderr, "Error closing the file.\n");
+		}
+	}
 	if (arguments->head != NULL)
 	{
 		free_arguments_node();
 	}
-	free(arguments->instruct);
-	free_toks_arr();
+	if (arguments->instruct != NULL)
+	{
+		free(arguments->instruct);
+	}
+	if (arguments->toks_arr != NULL)
+	{
+		free_toks_arr();
+	}
 }

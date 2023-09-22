@@ -50,7 +50,9 @@ void swap(stack_t **head, unsigned int line_number)
 	if (current == NULL || current->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
-		freeMemory_closeFile();
+		free(arguments->instruct);
+		free_toks_arr();
+
 		exit(EXIT_FAILURE);
 	}
 	else
