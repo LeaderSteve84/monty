@@ -148,13 +148,13 @@ void sub(stack_t **head, unsigned int line_number)
 }
 
 /**
- * div - Divides the first two data on the stack and pops
+ * divide - Divides the first two data on the stack and pops
  * @head: The whole stack
  * @line_number: The current line
  * Return: Nothing
  */
 
-void div(stack_t **head, unsigned int line_number)
+void divide(stack_t **head, unsigned int line_number)
 {
 	int node_count = 0, result;
 	stack_t *temp = *head, *current = *head;

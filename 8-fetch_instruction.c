@@ -9,7 +9,7 @@ void fetch_instruction(void)
 	instruction_t instructions[] = {
 		{"push", &push}, {"pall", &pall}, {"pint", &pint},
 		{"pop", &pop}, {"swap", &swap}, {"add", &add},
-		{"nop", &nop}, {"sub", &sub}, {"div", &div},
+		{"nop", &nop}, {"sub", &sub}, {"div", &divide},
 		{"mul", &mul}, {"mod", &mod}, {NULL, NULL}
 	};
 
