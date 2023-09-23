@@ -112,6 +112,30 @@ void pstr(stack_t **head, unsigned int line_number)
 }
 
 /**
+ * rotl - Rotates the stack to the bottom
+ * @head: The whole stack
+ * @line_number: The current line
+ * Return: Nothing
+ */
+
+void rotl(stack_t **head, unsigned int line_number)
+{
+	stack_t *current = *head;
+	int a;
+	(void)line_number;
+
+	if (current == NULL || current->next == NULL)
+		return;
+	a = current->n;
+	while (current->next != NULL)
+	{
+		current->n = current->next->n;
+		current = current->next;
+	}
+	current->n = a;
+}
+
+/**
  * _putchar - writes the character c to stdout
  * @c: The character to print
  *
