@@ -11,7 +11,8 @@ void fetch_instruction(void)
 		{"pop", &pop}, {"swap", &swap}, {"add", &add},
 		{"nop", &nop}, {"sub", &sub}, {"div", &divide},
 		{"mul", &mul}, {"mod", &mod}, {"pchar", &pchar},
-		{"pstr", &pstr}, {"rotl", &rotl}, {NULL, NULL}
+		{"pstr", &pstr}, {"rotl", &rotl}, {"stack", &stack},
+		{"queue", &queue}, {NULL, NULL}
 	};
 
 	if (arguments->toks_num == 0)

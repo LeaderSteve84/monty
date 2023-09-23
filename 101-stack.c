@@ -10,22 +10,15 @@ void push(stack_t **head, unsigned int line_number)
 {
 	stack_t *current, *new_node;
 
-	if (arguments->toks_num < 1 || !(check_string(arguments->toks_arr[1])))
+	if (arguments->toks_num <= 1 || !(check_string(arguments->toks_arr[1])))
 	{
 		freeMemory_closeFile();
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	if (head == NULL)
-	{
-		return;
-	}
 	new_node = malloc(sizeof(stack_t));
-
 	if (new_node == NULL)
-	{
 		memory_allocation_failed();
-	}
 	else
 	{
 		if (*head == NULL)
@@ -37,15 +30,38 @@ void push(stack_t **head, unsigned int line_number)
 		}
 		else
 		{
-			current = *head;
-			*head = new_node;
-			new_node->prev = NULL;
-			new_node->next = current;
-			current->prev = new_node;
-			new_node->n = (int)atoi(arguments->toks_arr[1]);
+			if (arguments->stack_queue_switch == 1)
+			{
+				current = *head;
+				*head = new_node;
+				new_node->prev = NULL;
+				new_node->next = current;
+				current->prev = new_node;
+				new_node->n = (int)atoi(arguments->toks_arr[1]);
+			}
+			else
+			{
+				current = *head;
+				handle_queue(current, new_node);
+			}
 		}
 	}
 	arguments->top += 1;
+}
+/**
+ * handle_queue - function that handle the queue.
+ * @current: current
+ * @new_node: newly created node
+ * Return: Nothing
+ */
+void handle_queue(stack_t *current, stack_t *new_node)
+{
+	while (current->next != NULL)
+		current = current->next;
+	new_node->prev = current;
+	current->next = new_node;
+	new_node->next = NULL;
+	new_node->n = (int)atoi(arguments->toks_arr[1]);
 }
 /**
  * check_string - check if string is a valid integer
@@ -112,16 +128,4 @@ void pint(stack_t **head, unsigned int line_number)
 	}
 	current = *head;
 	printf("%d\n", current->n);
-}
-
-/**
- * nop - do nothing
- * @head: pointer to the first node of the stack
- * @line_number: current line number in file
- * Return: Nothing
- */
-void nop(stack_t **head, unsigned int line_number)
-{
-	(void)head;
-	(void)line_number;
 }

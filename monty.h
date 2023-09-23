@@ -72,6 +72,7 @@ typedef struct arguments
 	int toks_num;
 	instruction_t *instruct;
 	stack_t *head;
+	int stack_queue_switch;
 	int top;
 } args;
 
@@ -90,10 +91,13 @@ void mod(stack_t **head, unsigned int line_number);
 void pchar(stack_t **head, unsigned int line_number);
 void pstr(stack_t **head, unsigned int line_number);
 void rotl(stack_t **head, unsigned int line_number);
+void stack(stack_t **head, unsigned int line_number);
+void queue(stack_t **head, unsigned int line_number);
 int _putchar(char c);
 void mul(stack_t **head, unsigned int line_number);
 int check_string(char *string);
 void free_lists(void);
 void freeMemory_closeFile(void);
+void handle_queue(stack_t *current, stack_t *new_node);
 
 #endif /* MONTY_H */

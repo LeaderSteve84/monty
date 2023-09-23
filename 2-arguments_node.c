@@ -16,4 +16,5 @@ void initialize_arguments_node(void)
 	arguments->file_line_num = 0;
 	arguments->head = NULL;
 	arguments->top = -1;
+	arguments->stack_queue_switch = 1;
 }

@@ -35,3 +35,41 @@ void mul(stack_t **head, unsigned int line_number)
 		free(current);
 	}
 }
+
+/**
+ * stack - a function that set format for stack
+ * @head: a pointer to pointer to first node
+ * @line_number: file line number
+ * Return: Nothing
+ */
+void stack(stack_t **head, unsigned int line_number)
+{
+	(void)head;
+	(void)line_number;
+	arguments->stack_queue_switch = 1;
+}
+
+/**
+ * gueue - a function that set format for queue
+ * @head: a poiter to the pointer to the first node
+ * @line_number: file line number
+ * Return: Nothing
+ */
+void queue(stack_t **head, unsigned int line_number)
+{
+	(void)head;
+	(void)line_number;
+	arguments->stack_queue_switch = 0;
+}
+
+/**
+ * nop - do nothing
+ * @head: pointer to the first node of the stack
+ * @line_number: current line number in file
+ * Return: Nothing
+ */
+void nop(stack_t **head, unsigned int line_number)
+{
+	(void)head;
+	(void)line_number;
+}
