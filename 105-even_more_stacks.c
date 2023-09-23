@@ -65,7 +65,7 @@ void pchar(stack_t **head, unsigned int line_number)
 		free_arguments_node();
 		exit(EXIT_FAILURE);
 	}
-	if (current->n >= 33 && current->n <= 126)
+	if (current->n >= 32 && current->n <= 126)
 	{
 		_putchar(current->n);
 		_putchar('\n');
@@ -99,8 +99,7 @@ void pstr(stack_t **head, unsigned int line_number)
 	{
 		if (current->n == 0)
 			break;
-		if ((current->n >= 65 && current->n <= 90) ||
-				(current->n >= 97 && current->n <= 122))
+		if (current->n >= 32 && current->n <= 126)
 		{
 			_putchar(current->n);
 		}
