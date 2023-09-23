@@ -90,7 +90,7 @@ void pstr(stack_t **head, unsigned int line_number)
 	stack_t *current = *head;
 	(void)line_number;
 
-	if (*head == NULL || head == NULL)
+	if (*head == NULL)
 	{
 		_putchar('\n');
 		return;
@@ -124,7 +124,7 @@ void rotl(stack_t **head, unsigned int line_number)
 	int a;
 	(void)line_number;
 
-	if (current == NULL || current->next == NULL)
+	if (current == NULL)
 		return;
 	a = current->n;
 	while (current->next != NULL)
