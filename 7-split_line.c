@@ -12,6 +12,11 @@ void tokenize_read_line(void)
 	strcpy(read_copy, arguments->read);
 	arguments->toks_num = 0;
 	token = strtok(read_copy, delimiter);
+	if (token && token[0] == '#')
+	{
+		free(read_copy);
+		return;
+	}
 	while (token)
 	{
 		arguments->toks_num += 1;
