@@ -1,11 +1,13 @@
 #include "monty.h"
+
+args *arguments = NULL;
+
 /**
  * main - Entry point
  * @av: argument vector
  * @argc: argument count
  * Return: 0 successful
  */
-args *arguments = NULL;
 
 int main(int argc, char **av)
 {
