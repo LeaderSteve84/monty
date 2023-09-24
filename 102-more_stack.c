@@ -19,7 +19,7 @@ void pop(stack_t **head, unsigned int line_number)
 	}
 
 	current = *head;
-	
+
 	if (current->next == NULL)
 	{
 		*head = NULL;
@@ -53,8 +53,8 @@ void swap(stack_t **head, unsigned int line_number)
 		free(arguments->instruct);
 		free_toks_arr();
 		free_lists();
-        	close_file();
-        	free_arguments_node();
+		close_file();
+		free_arguments_node();
 		/**freeMemory_closeFile();**/
 
 		exit(EXIT_FAILURE);

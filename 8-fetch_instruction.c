@@ -39,9 +39,7 @@ void instruction_not_valid(void)
 {
 	fprintf(stderr, "L%d: unknown instruction %s\n",
 			arguments->file_line_num, arguments->toks_arr[0]);
-	close_file();
-	free_toks_arr();
-	free_arguments_node();
-	free(arguments->instruct);
+
+	freeMemory_closeFile();
 	exit(EXIT_FAILURE);
 }
