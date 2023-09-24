@@ -50,7 +50,7 @@ void stack(stack_t **head, unsigned int line_number)
 }
 
 /**
- * gueue - a function that set format for queue
+ * queue - a function that set format for queue
  * @head: a poiter to the pointer to the first node
  * @line_number: file line number
  * Return: Nothing
