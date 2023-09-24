@@ -26,4 +26,5 @@ void freeMemory_closeFile(void)
 	{
 		free_toks_arr();
 	}
+	free(arguments);
 }

@@ -11,7 +11,7 @@ void pop(stack_t **head, unsigned int line_number)
 {
 	stack_t *current;
 
-	if (*head == NULL || arguments->top == -1)
+	if (*head == NULL || arguments->top < 0)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		freeMemory_closeFile();
@@ -19,18 +19,18 @@ void pop(stack_t **head, unsigned int line_number)
 	}
 
 	current = *head;
+	
+	if (current->next == NULL)
+	{
+		*head = NULL;
+	}
 
 	if (current->next != NULL)
 	{
 		*head = current->next;
 		current->next->prev = NULL;
-		free(current);
 	}
-	if (current->next == NULL)
-	{
-		*head = NULL;
-		free(current);
-	}
+	free(current);
 }
 
 /**
@@ -52,6 +52,10 @@ void swap(stack_t **head, unsigned int line_number)
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
 		free(arguments->instruct);
 		free_toks_arr();
+		free_lists();
+        	close_file();
+        	free_arguments_node();
+		/**freeMemory_closeFile();**/
 
 		exit(EXIT_FAILURE);
 	}
