@@ -19,6 +19,8 @@ void fetch_instruction(void)
 	{
 		return;
 	}
+	if (arguments->toks_arr[0] && arguments->toks_arr[0] == "#")
+		return;
 	for (i = 0; instructions[i].opcode != NULL; i++)
 	{
 		if (strcmp(instructions[i].opcode, arguments->toks_arr[0]) == 0)
